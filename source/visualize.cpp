@@ -50,11 +50,13 @@ int main(int argc, char **argv) {
   string file_path, pc_filename;
   double downsample_size, marker_size;
   int pcd_name_fill_num;
+  bool save_map;
 
   nh.getParam("file_path", file_path);
   nh.getParam("downsample_size", downsample_size);
   nh.getParam("pcd_name_fill_num", pcd_name_fill_num);
   nh.getParam("acc_pc_filename", pc_filename);
+  nh.getParam("save_map", save_map);
   nh.getParam("marker_size", marker_size);
 
   sensor_msgs::PointCloud2 debugMsg, cloudMsg, outMsg;
@@ -180,8 +182,11 @@ int main(int argc, char **argv) {
     ros::Duration(0.001).sleep();
   }
 
-  mypcl::savdPCD(file_path, 0, pc_acc, pc_filename);
-  cout << "saving file to path" << file_path + pc_filename << endl;
+  if (save_map) {
+    mypcl::savdPCD(file_path, 0, pc_acc, pc_filename);
+    cout << "saving file to path" << file_path + pc_filename << endl;
+  }
+
   ros::Rate loop_rate(1);
   while (ros::ok()) {
     ros::spinOnce();

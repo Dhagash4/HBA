@@ -5,6 +5,7 @@
     <param name="downsample_size" type="double" value="0.1"/>
     <param name="pcd_name_fill_num" type="int" value="5"/> <!--set 5 for kitti07 and 0 for park-->
     <param name="acc_pc_filename" type="string" value="acc_point_cloud"/> <!--set 5 for kitti07 and 0 for park-->
+    <param name="save_map" type="bool" value="false"/>
     <param name="marker_size" type="double" value="0.5"/>
   </node>
 
